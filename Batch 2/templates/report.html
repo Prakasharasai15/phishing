@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reported Phishing Websites</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PhishGuard Pro</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('usecases') }}">Use Cases</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero smaller-hero">
+            <h1>Reported Phishing Websites</h1>
+            <p>Community-reported potentially dangerous websites</p>
+        </section>
+
+        <section class="reported-sites">
+            <div class="container">
+                {% if sites %}
+                    <div class="sites-count">
+                        <p>Total reported sites: <strong>{{ sites|length }}</strong></p>
+                    </div>
+
+                    <div class="sites-list">
+                        <table class="reports-table">
+                            <thead>
+                                <tr>
+                                    <th>URL</th>
+                                    <th>Category</th>
+                                    <th>Reason</th>
+                                    <th>Reported On</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for url, reports in sites.items() %}
+                                    {% for report in reports %}
+                                    <tr>
+                                        <td class="url-cell">{{ url }}</td>
+                                        <td>{{ report.category }}</td>
+                                        <td>{{ report.reason }}</td>
+                                        <td>{{ report.timestamp }}</td>
+                                        <td>
+                                            <form action="{{ url_for('result') }}" method="post">
+                                                <input type="hidden" name="name" value="{{ url }}">
+                                                <button type="submit" class="check-again-btn">
+                                                    <i class="fas fa-search"></i> Check Again
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="no-reports">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>No websites have been reported yet.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>PhishGuard Pro</h3>
+                <p>An advanced machine learning-powered tool to detect and prevent phishing attempts.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('usecases') }}">Use Cases</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('view_reported_sites') }}">Reported Sites</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>Got questions or feedback? Reach out to us!</p>
+                <p><i class="fas fa-envelope"></i> phishguardpro@example.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PhishGuard Pro. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

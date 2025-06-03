@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}Use Cases - PhishGuard{% endblock %}
+
+{% block nav_usecases %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1 class="mb-4">PhishGuard Use Cases</h1>
+            <p class="lead">Discover how PhishGuard can help protect you and your organization from phishing attacks.</p>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-user me-2" style="color: var(--primary-color);"></i>For Individuals</h3>
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class="list-group-item">
+                            <h5>Email Link Verification</h5>
+                            <p>Received a suspicious email with a link? Copy and paste it into PhishGuard before clicking to verify its legitimacy.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Social Media Protection</h5>
+                            <p>Check shortened URLs often found on social media platforms that might hide malicious destinations.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Online Shopping Safety</h5>
+                            <p>Verify the legitimacy of online shopping sites, especially when they offer unusually large discounts.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Financial Security</h5>
+                            <p>Double-check banking and payment links to ensure you're not being directed to fraudulent sites.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-building me-2" style="color: var(--primary-color);"></i>For Organizations</h3>
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class="list-group-item">
+                            <h5>Employee Training</h5>
+                            <p>Use PhishGuard as part of security awareness training to demonstrate how to identify phishing attempts.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>IT Security Integration</h5>
+                            <p>Integrate PhishGuard's API with your organization's security infrastructure for automated URL checking.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Incident Response</h5>
+                            <p>When potential phishing attacks are reported, quickly analyze suspicious URLs to determine their threat level.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Vendor Risk Management</h5>
+                            <p>Verify the legitimacy of vendor websites and links before sharing sensitive information or credentials.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h2 class="mb-4">API Integration Examples</h2>
+            <p>PhishGuard offers an API for seamless integration with your applications and security systems.</p>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">API Request Example</h5>
+                </div>
+                <div class="card-body">
+                    <pre class="bg-light p-3 rounded"><code>POST /api/scan
+Content-Type: application/json
+
+{
+  "url": "https://example.com"
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">API Response Example</h5>
+                </div>
+                <div class="card-body">
+                    <pre class="bg-light p-3 rounded"><code>{
+  "url": "https://example.com",
+  "is_phishing": false,
+  "probability": 0.03,
+  "risk_percentage": 3.0,
+  "features": {
+    "url_length": 22,
+    "domain_age": 9128,
+    "has_suspicious_tld": 0,
+    "has_suspicious_words": 0,
+    "count_dots": 1,
+    "count_special_chars": 0,
+    "has_ip_address": 0,
+    "has_https": 1,
+    "url_shortening_service": 0,
+    "has_at_symbol": 0,
+    "redirect_double_slash": 0
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}API Documentation - PhishGuard{% endblock %}
+
+{% block nav_api %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h1 class="display-5 mb-4">API Documentation</h1>
+            <p class="lead mb-5">
+                Integrate PhishGuard's phishing detection capabilities into your own applications, 
+                browser extensions, or security tools.
+            </p>
+            
+            <div class="card mb-5">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="mb-0">URL Scan API</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Endpoint</h5>
+                    <pre class="bg-light p-3 rounded"><code>POST /api/scan</code></pre>
+                    
+                    <h5 class="card-title mt-4">Request Parameters</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>url</code></td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>The URL to scan for phishing characteristics</td>
+                                </tr>
+                                <tr>
+                                    <td><code>api_key</code></td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>Your API authentication key</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h5 class="card-title mt-4">Response</h5>
+                    <pre class="bg-light p-3 rounded"><code>{
+  "url": "https://example.com",
+  "is_phishing": false,
+  "probability": 0.12,
+  "risk_percentage": 12.0,
+  "status": "SAFE",
+  "risk_level": "low",
+  "features": {
+    "url_length": 22,
+    "domain_age": 365,
+    "has_suspicious_tld": 0,
+    "has_suspicious_words": 0,
+    "count_dots": 1,
+    "count_special_chars": 0,
+    "has_ip_address": 0,
+    "has_https": 1,
+    "url_shortening_service": 0,
+    "has_at_symbol": 0,
+    "redirect_double_slash": 0
+  },
+  "timestamp": "2025-04-01T23:35:32.000Z"
+}</code></pre>
+
+                    <h5 class="card-title mt-4">Example Usage</h5>
+                    <div class="nav nav-tabs mb-3" id="code-tabs" role="tablist">
+                        <button class="nav-link active" id="python-tab" data-bs-toggle="tab" data-bs-target="#python" type="button" role="tab">Python</button>
+                        <button class="nav-link" id="javascript-tab" data-bs-toggle="tab" data-bs-target="#javascript" type="button" role="tab">JavaScript</button>
+                    </div>
+                    <div class="tab-content" id="code-tab-content">
+                        <div class="tab-pane fade show active" id="python" role="tabpanel">
+<pre class="bg-light p-3 rounded"><code>import requests
+import json
+
+url = "https://your-phishguard-domain.com/api/scan"
+payload = {
+    "url": "https://example.com",
+    "api_key": "phishguard-demo-key"
+}
+headers = {"Content-Type": "application/json"}
+
+response = requests.post(url, data=json.dumps(payload), headers=headers)
+result = response.json()
+
+print(f"URL: {result['url']}")
+print(f"Status: {result['status']}")
+print(f"Risk: {result['risk_percentage']}%")</code></pre>
+                        </div>
+                        <div class="tab-pane fade" id="javascript" role="tabpanel">
+<pre class="bg-light p-3 rounded"><code>fetch('https://your-phishguard-domain.com/api/scan', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        url: 'https://example.com',
+        api_key: 'phishguard-demo-key'
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log(`URL: ${data.url}`);
+    console.log(`Status: ${data.status}`);
+    console.log(`Risk: ${data.risk_percentage}%`);
+})
+.catch(error => console.error('Error:', error));</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Get Your API Key</h3>
+                </div>
+                <div class="card-body">
+                    <p>To use our API, you need to register for an API key.</p>
+                    <a href="#" class="btn btn-primary">Register for API Access</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

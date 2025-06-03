@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}Scan Results - PhishGuard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body text-center p-4">
+                    <h2 class="card-title mb-4">URL Scan Results</h2>
+                    
+                    {% if result.is_safe %}
+                    <i class="fas fa-check-circle alert-icon safe"></i>
+                    <h3 class="text-success">{{ result.status }}</h3>
+                    <p class="lead">{{ result.warning }}</p>
+                    {% else %}
+                    <i class="fas fa-exclamation-triangle alert-icon unsafe"></i>
+                    <h3 class="text-danger">{{ result.status }}</h3>
+                    <p class="lead">{{ result.warning }}</p>
+                    {% endif %}
+                    
+                    <div class="alert {{ 'alert-success' if result.is_safe else 'alert-danger' }} mt-3">
+                        <h5 class="mb-2">Scanned URL:</h5>
+                        <p class="mb-0"><a href="{{ result.url }}" target="_blank" {% if not result.is_safe %}rel="noopener noreferrer"{% endif %}>{{ result.url }}</a></p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Risk Assessment:</h5>
+                        <div class="risk-meter-container mb-2">
+                            <div class="risk-meter">
+                                <div class="risk-level risk-{{ result.risk_level }}" style="width: {{ result.risk_percentage }}%;"></div>
+                            </div>
+                            <div class="risk-labels d-flex justify-content-between">
+                                <span class="badge bg-success">Safe</span>
+                                <span class="badge bg-warning text-dark">Medium</span>
+                                <span class="badge bg-danger">High Risk</span>
+                            </div>
+                        </div>
+                        <div class="risk-score-display text-center p-2 rounded
+                                    {{ 'bg-success text-white' if result.is_safe else
+                                       'bg-danger text-white' if result.risk_percentage > 75 else
+                                       'bg-warning' }}">
+                            <span class="fw-bold fs-4">{{ result.risk_percentage }}%</span>
+                            <span class="risk-text">Risk Score</span>
+                        </div>
+                    </div>
+                    
+                    <a href="/" class="btn btn-primary mt-3">Scan Another URL</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Detailed Analysis</h4>
+                </div>
+                <div class="card-body">
+                    <div class="feature-item">
+                        <span>URL Length</span>
+                        <span>{{ result.features.url_length }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Domain Age (days)</span>
+                        <span>{{ result.features.domain_age if result.features.domain_age >= 0 else 'Unknown' }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Suspicious TLD</span>
+                        <span>{{ 'Yes' if result.features.has_suspicious_tld else 'No' }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Suspicious Words</span>
+                        <span>{{ 'Yes' if result.features.has_suspicious_words else 'No' }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Number of Dots</span>
+                        <span>{{ result.features.count_dots }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Special Characters</span>
+                        <span>{{ result.features.count_special_chars }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Contains IP Address</span>
+                        <span>{{ 'Yes' if result.features.has_ip_address else 'No' }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Uses HTTPS</span>
+                        <span>{{ 'Yes' if result.features.has_https else 'No' }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>URL Shortening Service</span>
+                        <span>{{ 'Yes' if result.features.url_shortening_service else 'No' }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Contains @ Symbol</span>
+                        <span>{{ 'Yes' if result.features.has_at_symbol else 'No' }}</span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Double Slash Redirect</span>
+                        <span>{{ 'Yes' if result.features.redirect_double_slash else 'No' }}</span>
+                    </div>
+                    {% if result.screenshot %}
+                    <div class="mt-4">
+                        <h5>Preview:</h5>
+                        <div class="card mb-3">
+                            <div class="card-body p-2">
+                                <div class="alert alert-warning small mb-2">
+                                    <i class="fas fa-info-circle"></i> This is a safe preview of the website.
+                                </div>
+                                <div class="screenshot-container">
+                                    <img src="data:image/png;base64,{{ result.screenshot }}"
+                                         class="img-fluid border" alt="Website Screenshot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

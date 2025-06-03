@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Bulk URL Scanner - PhishGuard{% endblock %}
+
+{% block nav_bulk %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center mb-4">
+            <h1 class="display-5 mb-3">Bulk URL Scanner</h1>
+            <p class="lead mb-4">Scan multiple URLs at once. Enter one URL per line.</p>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4 mb-5">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="urls" class="form-label">URLs (one per line)</label>
+                        <textarea class="form-control" id="urls" name="urls" rows="5" 
+                                  placeholder="https://example1.com&#10;https://example2.com&#10;https://example3.com" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-search me-2"></i>Scan All URLs
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            {% if results %}
+            <h3 class="mb-3">Scan Results</h3>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>URL</th>
+                            <th>Status</th>
+                            <th>Risk Score</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                        <tr class="{{ 'table-success' if result.is_safe == True else 'table-danger' if result.is_safe == False else 'table-warning' }}">
+                            <td>
+                                <span class="text-truncate d-inline-block" style="max-width: 300px;">{{ result.url }}</span>
+                            </td>
+                            <td>
+                                {% if result.status == 'ERROR' %}
+                                <span class="badge bg-warning text-dark">ERROR</span>
+                                {% elif result.is_safe %}
+                                <span class="badge bg-success">SAFE</span>
+                                {% else %}
+                                <span class="badge bg-danger">UNSAFE</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if result.status != 'ERROR' %}
+                                {{ result.risk_percentage }}%
+                                {% else %}
+                                -
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if result.status != 'ERROR' %}
+                                <a href="/result?url={{ result.url|urlencode }}" class="btn btn-sm btn-outline-primary">Details</a>
+                                {% else %}
+                                <span class="small text-muted">{{ result.error }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-3">
+                <a href="{{ url_for('bulk_scan') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-redo me-2"></i>Scan More URLs
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

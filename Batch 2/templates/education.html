@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}Phishing Education - PhishGuard{% endblock %}
+
+{% block nav_education %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1 class="mb-4">Phishing Awareness Education</h1>
+            <p class="lead">Learn how to identify and protect yourself from phishing attacks in the digital age.</p>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="mb-3">What is Phishing?</h2>
+                    <p>Phishing is a type of cyber attack that uses disguised email addresses, websites, or messages to trick individuals into sharing sensitive information or installing malicious software. These attacks often mimic trusted entities and exploit human psychology rather than technical vulnerabilities.</p>
+                    
+                    <div class="alert alert-info mt-3">
+                        <strong>Did you know?</strong> The term "phishing" originated in the 1990s among hackers who were "fishing" for information from unsuspecting users.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="mb-0">Common Types of Phishing Attacks</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="fas fa-envelope me-2" style="color: var(--primary-color);"></i>Email Phishing</h5>
+                            <p>The most common type where attackers send fraudulent emails pretending to be from legitimate organizations.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="fas fa-fish me-2" style="color: var(--primary-color);"></i>Spear Phishing</h5>
+                            <p>Targeted attacks aimed at specific individuals or companies, often using personalized information.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="fas fa-globe me-2" style="color: var(--primary-color);"></i>Website Spoofing</h5>
+                            <p>Creating fake websites that look identical to legitimate ones to steal login credentials or financial information.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="fas fa-sms me-2" style="color: var(--primary-color);"></i>Smishing</h5>
+                            <p>Phishing conducted via SMS text messages, often containing malicious links.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="fas fa-phone me-2" style="color: var(--primary-color);"></i>Vishing</h5>
+                            <p>Voice phishing using phone calls to trick people into revealing sensitive information.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="fas fa-user-tie me-2" style="color: var(--primary-color);"></i>Whaling</h5>
+                            <p>Attacks targeting high-profile executives or high-net-worth individuals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="mb-0">Red Flags to Watch For</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h5><i class="fas fa-exclamation-circle text-danger me-2"></i>Suspicious Sender Email Address</h5>
+                            <p>Always check the actual email address, not just the display name. Look for misspellings or suspicious domains (e.g., "support@arnazon.com" instead of "amazon.com").</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5><i class="fas fa-exclamation-circle text-danger me-2"></i>Poor Grammar and Spelling</h5>
+                            <p>Legitimate companies typically have professional communications. Multiple errors may indicate a phishing attempt.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5><i class="fas fa-exclamation-circle text-danger me-2"></i>Urgent or Threatening Language</h5>
+                            <p>Creating a sense of urgency or fear is a common tactic to rush you into action without proper verification.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5><i class="fas fa-exclamation-circle text-danger me-2"></i>Suspicious Links and Attachments</h5>
+                            <p>Hover over links to see the actual URL before clicking. Be wary of unexpected attachments.</p>
+                        </li>
+                        <li class="list-group-item">
+                            <h5><i class="fas fa-exclamation-circle text-danger me-2"></i>Requests for Sensitive Information</h5>
+                            <p>Legitimate organizations generally don't ask for passwords, credit card numbers, or personal information via email.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="mb-0">How to Stay Protected</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Verify Before Trusting</h5>
+                                    <p class="card-text">Always verify the source of requests for information through official channels, not through the links or contact information provided in the suspicious message.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Use PhishGuard</h5>
+                                    <p class="card-text">Scan suspicious URLs before clicking on them to determine if they're legitimate or potentially harmful.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Enable Multi-Factor Authentication</h5>
+                                    <p class="card-text">Add an extra layer of security to your accounts so that even if your credentials are compromised, attackers can't access your accounts.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Keep Software Updated</h5>
+                                    <p class="card-text">Ensure your operating system, browsers, and security software are up to date to protect against known vulnerabilities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="mb-3">Ready to Check a Suspicious URL?</h3>
+                    <a href="/" class="btn btn-primary btn-lg">Scan Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

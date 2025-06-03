@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About PhishGuard Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PhishGuard Pro</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('usecases') }}">Use Cases</a></li>
+                <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero smaller-hero">
+            <h1>About PhishGuard Pro</h1>
+            <p>Learn more about our advanced phishing detection system</p>
+        </section>
+
+        <section class="about-content">
+            <div class="container">
+                <div class="about-section">
+                    <h2>Our Mission</h2>
+                    <p>
+                        PhishGuard Pro was created with a simple but crucial mission: to protect internet users from
+                        the growing threat of phishing attacks. In an age where digital security is paramount,
+                        we aim to provide accessible, accurate, and advanced tools to identify malicious websites.
+                    </p>
+                </div>
+
+                <div class="about-section">
+                    <h2>The Technology</h2>
+                    <p>
+                        Our system uses a sophisticated machine learning model trained on thousands of legitimate and
+                        phishing websites. The model analyzes over 30 different features of a URL and its domain to
+                        determine the likelihood of it being a phishing attempt.
+                    </p>
+                    <div class="tech-features">
+                        <div class="tech-feature">
+                            <i class="fas fa-robot"></i>
+                            <h3>Machine Learning</h3>
+                            <p>Gradient boosting classifier trained on extensive datasets</p>
+                        </div>
+                        <div class="tech-feature">
+                            <i class="fas fa-code-branch"></i>
+                            <h3>Feature Extraction</h3>
+                            <p>Comprehensive URL and domain feature analysis</p>
+                        </div>
+                        <div class="tech-feature">
+                            <i class="fas fa-database"></i>
+                            <h3>Community Reporting</h3>
+                            <p>Crowdsourced threat intelligence from user reports</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>How It Works</h2>
+                    <div class="how-it-works">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>URL Submission</h3>
+                                <p>Users submit a suspicious URL they want to check</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Feature Extraction</h3>
+                                <p>Our system extracts relevant features from the URL and domain</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Machine Learning Analysis</h3>
+                                <p>The features are analyzed by our trained model</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Results & Recommendations</h3>
+                                <p>Users receive an assessment of the URL's safety</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>Key Features</h2>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time phishing detection</li>
+                        <li><i class="fas fa-check-circle"></i> Domain age verification</li>
+                        <li><i class="fas fa-check-circle"></i> Unreachable website detection</li>
+                        <li><i class="fas fa-check-circle"></i> Community reporting system</li>
+                        <li><i class="fas fa-check-circle"></i> Detailed feature analysis</li>
+                        <li><i class="fas fa-check-circle"></i> API access for developers</li>
+                    </ul>
+                </div>
+
+                <div class="about-section">
+                    <h2>The Team</h2>
+                    <p>
+                        PhishGuard Pro was created by a team of cybersecurity enthusiasts and machine learning experts
+                        dedicated to making the internet a safer place. The project is maintained by Friendlydevil03.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>PhishGuard Pro</h3>
+                <p>An advanced machine learning-powered tool to detect and prevent phishing attempts.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('usecases') }}">Use Cases</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('view_reported_sites') }}">Reported Sites</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>Got questions or feedback? Reach out to us!</p>
+                <p><i class="fas fa-envelope"></i> phishguardpro@example.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PhishGuard Pro. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
